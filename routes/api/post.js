@@ -1,0 +1,13 @@
+const express = require("express");
+const router = express.Router();
+
+// @rout    GET /api/post/test
+// @desc    test post routes
+// @access  public
+router.get("/test", (req, res) =>
+  res.json({
+    msg: "post works"
+  })
+);
+
+module.exports = router;

@@ -8,6 +8,7 @@ const passport = require("passport"); // To create protected routes
 
 // import validation
 const validateRegisterInput = require("../../validators/register");
+const validateLoginInput = require("../../validators/login");
 
 // import User model
 const User = require("../../models/Users");
@@ -68,13 +69,21 @@ router.post("/register", (req, res) => {
 // @desc    Login user or return JWT token
 // @access  public
 router.post("/login", (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  // check validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const email = req.body.email;
   const password = req.body.password;
 
   // find user by email ID
   User.findOne({ email }).then(User => {
     if (!User) {
-      return res.status(404).json({ email: "User not found!" });
+      errors.email = "User not found!";
+      return res.status(404).json(errors);
     }
 
     bcrypt.compare(password, User.password).then(isMatch => {
@@ -90,7 +99,8 @@ router.post("/login", (req, res) => {
           });
         });
       } else {
-        return res.status(400).json({ password: "Incorrect password!" });
+        errors.password = "Incorrect password";
+        return res.status(400).json(errors);
       }
     });
   });

@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport"); // To create protected routes
 
-// import validation
+// import validators
 const validateRegisterInput = require("../../validators/register");
 const validateLoginInput = require("../../validators/login");
 
@@ -22,7 +22,7 @@ router.get("/test", (req, res) =>
   })
 );
 
-// @rout    GET /api/users/register
+// @rout    POST /api/users/register
 // @desc    registration page for user
 // @access  public
 router.post("/register", (req, res) => {
@@ -65,7 +65,7 @@ router.post("/register", (req, res) => {
   });
 });
 
-// @rout    GET /api/users/login
+// @rout    POST /api/users/login
 // @desc    Login user or return JWT token
 // @access  public
 router.post("/login", (req, res) => {

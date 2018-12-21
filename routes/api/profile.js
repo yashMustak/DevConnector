@@ -48,7 +48,9 @@ router.get(
 // @desc    Get all profiles
 // @access  Public
 router.get("/all", (req, res) => {
-  const errors = {};
+  Profile.find()
+    .then(profile => res.json(profile))
+    .catch(err => res.status(404).json(err));
 });
 
 // @rout    POST /api/profile/:handle

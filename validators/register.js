@@ -36,12 +36,12 @@ module.exports = function validateRegisterInput(data) {
 
   // check if password is provided
   if (validator.isEmpty(data.password)) {
-    errors.password = "password is required";
+    errors.password = "Password is required";
   }
 
   // check if confirm password matches password
   if (!validator.equals(data.password, data.password2)) {
-    errors.password2 = "Confirm password do not match";
+    errors.password2 = "Confirm Password do not match";
   }
 
   // check if confirm password is provided

@@ -22,7 +22,7 @@ class Landing extends Component {
           <br />
           <Link
             to="/register"
-            class="btn btn-primary btn-lg active buttonCustom"
+            className="btn btn-primary btn-lg active buttonCustom"
             role="button"
             aria-pressed="true"
           >
@@ -30,7 +30,7 @@ class Landing extends Component {
           </Link>
           <Link
             to="/login"
-            class="btn btn-secondary btn-lg active buttonCustom"
+            className="btn btn-secondary btn-lg active buttonCustom"
             role="button"
             aria-disabled="true"
           >

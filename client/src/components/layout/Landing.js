@@ -1,23 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
 
 class Landing extends Component {
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   render() {
     return (
       <div className="landing1">
         <div className="landingNav">
-          <h1 className="mainHeading">Developer Connector</h1>
+          <h1 className="mainHeading">World of Developers</h1>
           <br />
           Create a developer profile/portfolio share post and get help from
           other developers
           <br />
           <br />
-          {/* <button type="button" className="btn btn-primary">
-            Sign Up
-          </button>
-          <button type="button" className="btn btn-light">
-            Login
-          </button> */}
           <Link
             to="/register"
             class="btn btn-primary btn-lg active buttonCustom"
@@ -40,4 +42,12 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+Landing.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Landing);

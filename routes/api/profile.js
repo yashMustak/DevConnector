@@ -230,7 +230,7 @@ router.post(
 );
 
 // @rout    DELETE /api/profile/experience/:exp_id
-// @desc    Generate new experience
+// @desc    Delete experience
 // @access  private
 router.delete(
   "/experience/:exp_id",
@@ -254,7 +254,7 @@ router.delete(
 );
 
 // @rout    DELETE /api/profile/eduction/:edu_id
-// @desc    Generate new experience
+// @desc    Delete Education
 // @access  private
 router.delete(
   "/education/:edu_id",
